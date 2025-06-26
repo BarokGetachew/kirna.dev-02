@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>kirna.dev – Projects</title>
+  <link href="css/main.css" rel="stylesheet" />
+  <script src="js/main.js" defer></script>
+  <!-- AOS styles -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body class="font-sans">
+  <!-- NAVBAR -->
+  <div id="navbar-include"></div>
+
+  <main class="pt-24 px-6 max-w-5xl mx-auto space-y-10">
+  <section data-aos="fade-up">
+    <h1 class="text-3xl font-bold text-center">Projects Showcase ⚡</h1>
+  </section>
+
+  <section class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+    <div class="bg-white/5 p-6 rounded-lg shadow hover:shadow-xl hover:scale-[1.02] transition text-white" data-aos="fade-up">
+      <h2 class="font-semibold">Project One</h2>
+      <p class="text-sm text-gray-400">Placeholder description.</p>
+    </div>
+    <div class="bg-white/5 p-6 rounded-lg shadow hover:shadow-xl hover:scale-[1.02] transition text-white" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="font-semibold">Project Two</h2>
+      <p class="text-sm text-gray-400">Placeholder description.</p>
+    </div>
+    <div class="bg-white/5 p-6 rounded-lg shadow hover:shadow-xl hover:scale-[1.02] transition text-white" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="font-semibold">Project Three</h2>
+      <p class="text-sm text-gray-400">Placeholder description.</p>
+    </div>
+  </section>
+</main>
+
+
+  <!-- FOOTER -->
+  <div id="footer-include"></div>
+
+  <script>
+    fetch("components/navbar.html").then(res => res.text()).then(data => {
+      document.getElementById("navbar-include").innerHTML = data;
+    });
+    fetch("components/footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-include").innerHTML = data;
+    });
+  </script>
+  <!-- AOS script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
