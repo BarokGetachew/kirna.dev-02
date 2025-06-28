@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  
 // main.js
 
 // This file handles micro-interactions and dynamic UI behaviors for Kirna.dev
@@ -68,8 +66,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add more micro-interactions as needed below
   // ...
-});
-
   // Optional: Any other micro animations or event listeners can be added here
-  
 });
