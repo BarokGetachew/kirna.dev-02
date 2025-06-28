@@ -1,3 +1,8 @@
+<!--
+  about.html - Kirna.dev About Page
+  Modern, glassy, light design using Tailwind CSS and modular JS components.
+  Sections: Navbar, About, Mission, Why Choose Us, Footer. Placeholder content for easy customization.
+-->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -8,49 +13,56 @@
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     body {
-      background: linear-gradient(135deg, #1a1b2f, #2c2e4a);
-      color: #d1d5db;
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+      color: #222;
       font-family: 'Inter', sans-serif;
     }
   </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-transparent">
 
-  <!-- Navbar -->
+  <!-- Navbar placeholder (injected by navbar.js) -->
   <div id="navbar-placeholder"></div>
 
-  <main class="flex-grow max-w-4xl mx-auto px-6 md:px-16 py-16">
-    <section data-aos="fade-right" class="mb-12">
-      <h1 class="text-4xl font-bold text-purple-400 drop-shadow mb-4">About Kirna.dev</h1>
-      <p class="text-gray-400 leading-relaxed text-lg">
-        Kirna.dev is where creativity meets code. We’re a team of passionate web developers
-        pushing boundaries with cutting-edge design and sleek, performant interfaces.
-      </p>
-    </section>
-
-    <section data-aos="fade-left" class="mb-12">
-      <h2 class="text-2xl font-semibold text-purple-300 mb-3">Our Mission</h2>
-      <p class="text-gray-400 leading-relaxed text-lg">
-        To craft powerful, elegant digital experiences that captivate users and elevate brands.
-        We believe clean code and sharp design go hand in hand.
-      </p>
-    </section>
-
-    <section data-aos="fade-up" class="mb-12">
-      <h2 class="text-2xl font-semibold text-purple-300 mb-3">Why Kirna.dev?</h2>
-      <ul class="list-disc list-inside text-gray-400 text-lg leading-relaxed">
-        <li>Modern technologies with a touch of artistry</li>
-        <li>Pixel-perfect responsive designs</li>
-        <li>Performance and accessibility at the core</li>
-        <li>Collaborative, client-focused approach</li>
-      </ul>
+  <!-- Main content: About, Mission, Why Choose Us -->
+  <main class="flex-grow flex flex-col items-center justify-center px-4 md:px-0 py-24">
+    <!-- About Section -->
+    <section data-aos="fade-up" class="w-full max-w-3xl bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl p-10 border border-gray-200 mb-16">
+      <h1 class="text-5xl font-extrabold text-gray-900 mb-6 tracking-tight drop-shadow-lg">About Us</h1>
+      <p class="text-gray-600 text-xl mb-8">Placeholder: We are a creative team passionate about building beautiful, high-performance digital experiences. Our mission is to blend design and technology for stunning results.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Mission Card -->
+        <div class="bg-white/80 rounded-2xl shadow-lg p-8 border border-gray-100 flex flex-col items-center">
+          <div class="w-14 h-14 mb-4 rounded-full bg-gradient-to-tr from-blue-400 to-cyan-300 flex items-center justify-center text-2xl font-bold text-white">
+            🌟
+          </div>
+          <h2 class="text-lg font-semibold mb-2 text-gray-900">Our Mission</h2>
+          <p class="text-gray-500 text-center">Placeholder: To deliver elegant, user-focused solutions that inspire and empower.</p>
+        </div>
+        <!-- Why Choose Us Card -->
+        <div class="bg-white/80 rounded-2xl shadow-lg p-8 border border-gray-100 flex flex-col items-center">
+          <div class="w-14 h-14 mb-4 rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-300 flex items-center justify-center text-2xl font-bold text-white">
+            🚀
+          </div>
+          <h2 class="text-lg font-semibold mb-2 text-gray-900">Why Choose Us?</h2>
+          <ul class="text-gray-500 text-center space-y-2">
+            <li>Modern, responsive design</li>
+            <li>Performance & accessibility</li>
+            <li>Client-focused collaboration</li>
+            <li>Cutting-edge tech</li>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer placeholder (injected by footer.js) -->
   <div id="footer-placeholder"></div>
+  <div class="w-full text-center py-6 text-gray-400 text-sm">
+    UI inspired by <a href="https://ui.aceternity.com/" class="underline hover:text-gray-600" target="_blank" rel="noopener">Aceternity UI</a>
+  </div>
 
-  <!-- Scripts -->
+  <!-- Scripts: AOS for animations, navbar/footer injection -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 700, easing: "ease-in-out", once: true, offset: 50 });
