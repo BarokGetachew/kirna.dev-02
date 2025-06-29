@@ -84,8 +84,8 @@ function pageTransitions() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  injectPartial('navbar-placeholder', '../components/navbar.html');
-  injectPartial('footer-placeholder', '../components/footer.html');
+  injectPartial('navbar-placeholder', './components/navbar.html');
+  injectPartial('footer-placeholder', './components/footer.html');
   // Advanced Apple-style features
   appleParallax();
   tiltCards();
