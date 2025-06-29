@@ -16,10 +16,7 @@ Thumbs.db
 .env
 .env.*
 
-# === Build Output ===
-dist/
-build/
-css/output.css
+
 
 # === Logs ===
 *.log

@@ -1,70 +1,142 @@
-// main.js
+// main.js - Premium interactivity for Kirna.dev
+// Handles mobile menu, dark/light mode, scroll-to-top, navbar/footer injection, and advanced Apple-style animations
 
-// This file handles micro-interactions and dynamic UI behaviors for Kirna.dev
-// All scripts are modular and use vanilla JS for maximum compatibility and performance.
+// Inject navbar and footer from HTML partials
+async function injectPartial(id, url) {
+  const el = document.getElementById(id);
+  if (el) {
+    const res = await fetch(url);
+    el.innerHTML = await res.text();
+  }
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Button click feedback (micro-interaction)
-  document.querySelectorAll('button').forEach(button => {
-    button.addEventListener('mousedown', () => {
-      button.style.transform = 'scale(0.97)';
-    });
-    button.addEventListener('mouseup', () => {
-      button.style.transform = 'scale(1)';
-    });
-    button.addEventListener('mouseleave', () => {
-      button.style.transform = 'scale(1)';
+// Apple-style parallax hero and floating shapes
+function appleParallax() {
+  const hero = document.querySelector('section[data-aos="fade-up"]');
+  const shapes = document.querySelectorAll('.floating-shape');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (hero) {
+      hero.style.transform = `translateY(${scrollY * 0.15}px) scale(${1 + scrollY * 0.0005})`;
+      hero.style.transition = 'transform 0.3s cubic-bezier(.4,2,.6,1)';
+    }
+    shapes.forEach((shape, i) => {
+      shape.style.transform = `translateY(${Math.sin(scrollY/100 + i) * 20}px) scale(1.08)`;
     });
   });
+}
 
-  // Lazy load images with data-src attribute
-  const lazyImages = document.querySelectorAll("img[data-src]");
-  if ("IntersectionObserver" in window) {
-    const imgObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute("data-src");
-          observer.unobserve(img);
-        }
-      });
+// 3D tilt effect for cards (Apple style)
+function tiltCards() {
+  document.querySelectorAll('.glass, .bg-white\/80, .dark\:bg-gray-800\/80').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * 8;
+      const rotateY = ((x - centerX) / centerX) * -8;
+      card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+      card.style.transition = 'transform 0.1s';
     });
-    lazyImages.forEach(img => imgObserver.observe(img));
-  } else {
-    // Fallback for older browsers
-    lazyImages.forEach(img => {
-      img.src = img.dataset.src;
-      img.removeAttribute("data-src");
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.5s cubic-bezier(.4,2,.6,1)';
     });
-  }
+  });
+}
 
-  // Animate elements on scroll (fade-in)
-  const fadeEls = document.querySelectorAll(".fade-in-on-scroll");
-  if ("IntersectionObserver" in window) {
-    const fadeObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("opacity-100", "translate-y-0");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    fadeEls.forEach(el => fadeObserver.observe(el));
-  }
+// Animated counters for stats (Apple style)
+function animateCounters() {
+  document.querySelectorAll('[data-counter]').forEach(counter => {
+    const update = () => {
+      const target = +counter.getAttribute('data-counter');
+      const current = +counter.innerText.replace(/,/g, '');
+      const inc = Math.ceil((target - current) / 12);
+      if (current < target) {
+        counter.innerText = (current + inc).toLocaleString();
+        setTimeout(update, 30);
+      } else {
+        counter.innerText = target.toLocaleString();
+      }
+    };
+    update();
+  });
+}
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
+// Page transition fade (Apple style)
+function pageTransitions() {
+  document.body.classList.add('fade-in');
+  document.querySelectorAll('a').forEach(link => {
+    if (link.target === '_blank' || link.href.startsWith('mailto:')) return;
+    link.addEventListener('click', e => {
+      if (link.href && !link.href.includes('#')) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+        document.body.classList.remove('fade-in');
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location = link.href;
+        }, 350);
       }
     });
   });
+}
 
-  // Add more micro-interactions as needed below
-  // ...
-  // Optional: Any other micro animations or event listeners can be added here
+document.addEventListener('DOMContentLoaded', () => {
+  injectPartial('navbar-placeholder', '../components/navbar.html');
+  injectPartial('footer-placeholder', '../components/footer.html');
+  // Advanced Apple-style features
+  appleParallax();
+  tiltCards();
+  animateCounters();
+  pageTransitions();
+  // Alpine.js is loaded for future interactivity (Kirby/Aceternity ready)
+});
+
+  // Mobile menu toggle
+  document.body.addEventListener('click', e => {
+    if (e.target.closest('#mobile-menu-btn')) {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+  });
+
+  // Dark/Light mode toggle
+  document.body.addEventListener('click', e => {
+    if (e.target.closest('#theme-toggle')) {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    }
+  });
+
+  // Initial theme
+  if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  }
+
+  // Scroll-to-top button
+  const btn = document.createElement('button');
+  btn.id = 'scrollToTopBtn';
+  btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>';
+  document.body.appendChild(btn);
+  function toggleBtn() {
+    if (window.scrollY > 200) {
+      btn.classList.add('show');
+      btn.classList.remove('hide');
+    } else {
+      btn.classList.remove('show');
+      btn.classList.add('hide');
+    }
+  }
+  window.addEventListener('scroll', toggleBtn);
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Advanced Apple-style features
+  appleParallax();
+  tiltCards();
+  animateCounters();
+  pageTransitions();
 });

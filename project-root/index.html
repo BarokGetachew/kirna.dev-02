@@ -1,74 +1,70 @@
+
 <!--
-  index.html - Kirna.dev Home Page
-  Modern, glassy, light design using Tailwind CSS and modular JS components.
-  Sections: Navbar, Hero, Features, Footer. Placeholder content for easy customization.
+  index.html - Kirna.dev Home Page (2025)
+  Premium, glassy, animated, dark/light mode, fully responsive
 -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kirna.dev | Home</title>
+  <title>Kirna.dev</title>
   <link rel="stylesheet" href="css/output.css" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <style>
-    body {
-      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
-      color: #222;
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 </head>
-<body class="flex flex-col min-h-screen bg-transparent">
-
-  <!-- Navbar placeholder (injected by navbar.js) -->
+<body class="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-950 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <div id="navbar-placeholder"></div>
 
-  <!-- Main content: Hero and Features -->
-  <main class="flex-grow flex flex-col items-center justify-center px-4 md:px-0 py-24">
-    <!-- Hero Section -->
-    <section data-aos="fade-up" class="w-full max-w-3xl bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl p-10 border border-gray-200">
-      <h1 class="text-6xl font-extrabold text-gray-900 mb-6 tracking-tight drop-shadow-lg">Your Next Big Project</h1>
-      <p class="text-gray-600 text-xl mb-10">Placeholder content: Build something amazing with a modern, clean, and minimal design. This is where your story begins.</p>
-      <a href="projects.html" class="inline-block bg-black hover:bg-gray-800 transition px-8 py-4 rounded-xl shadow-lg text-white font-bold text-lg tracking-wide">
-        Explore Projects
-      </a>
+  <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 md:py-24 min-h-[70vh] w-full">
+    <section class="w-full max-w-3xl glass text-center" data-aos="fade-up">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-lg">Your Next Big Project</h1>
+      <p class="text-gray-600 dark:text-gray-300 text-xl mb-10 max-w-2xl mx-auto">Build something amazing with a modern, clean, and bold design. This is where your story begins.</p>
+      <a href="projects.html" class="inline-block bg-blue-600 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800 transition px-8 py-4 rounded-xl shadow-lg text-white font-bold text-lg tracking-wide btn-ripple">Explore Projects</a>
     </section>
-    <!-- Features Section -->
-    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
-      <!-- Feature Card 1 -->
-      <div class="bg-white/80 rounded-2xl shadow-lg p-8 border border-gray-100 flex flex-col items-center">
-        <div class="w-16 h-16 mb-4 rounded-full bg-gradient-to-tr from-blue-400 to-cyan-300 flex items-center justify-center text-3xl font-bold text-white">A</div>
-        <h2 class="text-xl font-semibold mb-2 text-gray-900">Amazing Feature</h2>
-        <p class="text-gray-500 text-center">Placeholder description for a standout feature. Make your product shine here.</p>
-      </div>
-      <!-- Feature Card 2 -->
-      <div class="bg-white/80 rounded-2xl shadow-lg p-8 border border-gray-100 flex flex-col items-center">
-        <div class="w-16 h-16 mb-4 rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-300 flex items-center justify-center text-3xl font-bold text-white">B</div>
-        <h2 class="text-xl font-semibold mb-2 text-gray-900">Bold Design</h2>
-        <p class="text-gray-500 text-center">Placeholder for a beautiful, modern, and bold design element. Impress your users.</p>
-      </div>
-      <!-- Feature Card 3 -->
-      <div class="bg-white/80 rounded-2xl shadow-lg p-8 border border-gray-100 flex flex-col items-center">
-        <div class="w-16 h-16 mb-4 rounded-full bg-gradient-to-tr from-green-400 to-lime-300 flex items-center justify-center text-3xl font-bold text-white">C</div>
-        <h2 class="text-xl font-semibold mb-2 text-gray-900">Cutting Edge</h2>
-        <p class="text-gray-500 text-center">Placeholder for a cutting-edge technology or service. Show your innovation.</p>
-      </div>
-    </div>
+    <svg class="section-divider" viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="url(#gradient)" d="M0,0 C480,60 960,0 1440,60 L1440,60 L0,60 Z"></path><defs><linearGradient id="gradient" x1="0" y1="0" x2="1440" y2="60" gradientUnits="userSpaceOnUse"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs></svg>
+    <div class="floating-shape" style="top:10%;left:5%;width:120px;height:120px;background:radial-gradient(circle at 30% 30%,#7c3aed 0,#2563eb 100%);"></div>
+    <div class="floating-shape" style="bottom:8%;right:8%;width:90px;height:90px;background:radial-gradient(circle at 70% 70%,#2563eb 0,#7c3aed 100%);"></div>
   </main>
 
-  <!-- Footer placeholder (injected by footer.js) -->
   <div id="footer-placeholder"></div>
-  <div class="w-full text-center py-6 text-gray-400 text-sm">
-    UI inspired by <a href="https://ui.aceternity.com/" class="underline hover:text-gray-600" target="_blank" rel="noopener">Aceternity UI</a>
-  </div>
 
-  <!-- Scripts: AOS for animations, navbar/footer injection -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 700, easing: "ease-in-out", once: true, offset: 50 });
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+</body>
+</html>
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    })();
+    // Dark/Light mode toggle
+    (function() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const htmlEl = document.documentElement;
+      function setTheme(dark) {
+        if (dark) {
+          htmlEl.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          htmlEl.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+      // Initial theme
+      if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        setTheme(true);
+      } else {
+        setTheme(false);
+      }
+      themeToggle.addEventListener('click', () => {
+        setTheme(!htmlEl.classList.contains('dark'));
+      });
+    })();
   </script>
-  <script src="js/navbar.js"></script>
-  <script src="js/footer.js"></script>
 </body>
 </html>
